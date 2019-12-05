@@ -1,5 +1,13 @@
 # ohce-kata
-GuideSmiths 2019 Christmas Challenge
+GuideSmiths 2019 Christmas Challenge.
+
+Solution criteria (to be scored from 1 to 10)
+
+- commits quality
+- TDD driven
+- pairing
+- test design quality
+- software design quality
 
 ## kata-requirements
 **ohce** is a console application that echoes the reverse of what you input through the console.
