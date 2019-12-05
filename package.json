@@ -4,7 +4,9 @@
   "description": "A cli app for the ohce kata",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "precommit": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,9 @@
   "homepage": "https://github.com/danielherrerohernando/ohce-kata#readme",
   "bin": {
     "ohce": "./src/index.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "husky": "^3.1.0"
   }
 }
