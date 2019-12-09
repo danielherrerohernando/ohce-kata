@@ -1,4 +1,4 @@
-const { GOODMORNING, GOODAFTERNOON, GOODNIGHT } = require('./constants');
+const { GOODMORNING, GOODAFTERNOON, GOODNIGHT, BYE } = require('./constants');
 
 const greetUser = (username, hour = 8) => {
 	if (hour < 12) return `¡${GOODMORNING} ${username}!`;
@@ -6,7 +6,7 @@ const greetUser = (username, hour = 8) => {
 	return `¡${GOODNIGHT} ${username}!`;
 };
 
-const goodbyeUser = username => `Adios ${username}`;
+const goodbyeUser = username => `${BYE} ${username}`;
 
 const getCurrentHour = () => new Date().getHours();
 
