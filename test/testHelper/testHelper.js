@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const concat = require('concat-stream');
 
-const execute = (processPath, userName) => {
+const execute = processPath => userName => {
 	const childProcess = spawn('node', [processPath, userName]);
 	const promise = new Promise((resolve, reject) => {
 		childProcess.stdout.setEncoding('utf-8');
