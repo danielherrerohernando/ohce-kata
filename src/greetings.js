@@ -8,4 +8,6 @@ const greetUser = (username, hour = 8) => {
 
 const goodbyeUser = username => `Adios ${username}`;
 
-module.exports = { greetUser, goodbyeUser };
+const getCurrentHour = () => new Date().getHours();
+
+module.exports = { greetUser, goodbyeUser, getCurrentHour };
