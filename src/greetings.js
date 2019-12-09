@@ -6,4 +6,6 @@ const greetUser = (username, hour = 8) => {
 	return `¡${GOODNIGHT} ${username}!`;
 };
 
-module.exports = { greetUser };
+const goodbyeUser = username => {};
+
+module.exports = { greetUser, goodbyeUser };

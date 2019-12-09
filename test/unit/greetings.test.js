@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { greetUser } = require('../../src/greetings');
+const { greetUser, goodbyeUser } = require('../../src/greetings');
 
 describe('Unit test - Greetings Handler', () => {
 	it('Should greet user including the username', () => {
@@ -17,5 +17,9 @@ describe('Unit test - Greetings Handler', () => {
 	it('Should greet user including the username and depending on current time - Night', () => {
 		const greeting = greetUser('Daniel', 23);
 		expect(greeting).to.equal('¡Buenas noches Daniel!');
+	});
+	it('Should say goodbye to the user including the username', () => {
+		const goodbye = goodbyeUser('Daniel');
+		expect(goodbye).to.equal('Adios Daniel');
 	});
 });
