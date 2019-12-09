@@ -1,1 +1,1 @@
-console.log('Hel');
+process.stdout.write('¡Buenos días!');
