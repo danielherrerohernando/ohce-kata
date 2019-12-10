@@ -1,6 +1,4 @@
-const chai = require('chai');
-chai.use(require('chai-string'));
-const { expect } = chai;
+const { expect } = require('chai').use(require('chai-string'));
 const testHelper = require('../testHelper/testHelper');
 const [mockTimeMorning, mockTimeAfternoon, mockTimeNight] = [9, 16, 23];
 
