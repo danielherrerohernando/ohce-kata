@@ -4,7 +4,7 @@
 	"description": "A cli app for the ohce kata",
 	"main": "./src/index.js",
 	"scripts": {
-		"test": "mocha 'test/**/*.test.js'",
+		"test": "NODE_ENV=test  mocha 'test/**/*.test.js'",
 		"lint": "eslint .",
 		"precommit": "npm run lint",
 		"prepush": "npm run test"
