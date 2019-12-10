@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const readline = require('readline');
-const { greetUser, goodbyeUser } = require('./greetings');
+const { greetUser, goodbyeUser, giveFeedback } = require('./greetings');
 const { reverseInput } = require('./inputHandler');
 
 global.getCurrentHour = require('./timeHandler').getCurrentHour;
@@ -20,7 +20,9 @@ const init = () => {
 			process.stdout.write(goodbyeUser(userName) + '\n');
 			process.exit(0);
 		}
-		process.stdout.write(reverseInput(input) + '\n');
+		const output = reverseInput(input);
+		process.stdout.write(output + '\n');
+		input === output && process.stdout.write(giveFeedback());
 	});
 };
 
