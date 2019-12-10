@@ -3,7 +3,8 @@
 const readline = require('readline');
 const { greetUser, goodbyeUser } = require('./greetings');
 const { reverseInput } = require('./inputHandler');
-let { getCurrentHour } = require('./timeHandler');
+
+global.getCurrentHour = require('./timeHandler').getCurrentHour;
 
 const userName = process.argv[2] || process.env.USER || '';
 
@@ -23,12 +24,4 @@ const init = () => {
 	});
 };
 
-process.on('message', mock => {
-	if (mock.mockTime) getCurrentHour = () => mock.mockTime;
-	if (mock.start) {
-		init();
-		process.disconnect();
-	}
-});
-
-process.env.NODE_ENV !== 'test' && init();
+process.env.NODE_ENV !== 'test' ? init() : require('../test/testHelper/mocks')(init);
