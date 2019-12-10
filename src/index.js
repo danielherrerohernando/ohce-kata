@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 const readline = require('readline');
-const { greetUser, goodbyeUser, giveFeedback } = require('./greetings');
-const { reverseInput } = require('./inputHandler');
+const { write } = require('./lib/stdoutWriter');
+const { greetUser, goodbyeUser } = require('./lib/greetings');
+const { reverseInput, palindromeChecker } = require('./lib/inputHandler');
 
-global.getCurrentHour = require('./timeHandler').getCurrentHour;
+global.getCurrentHour = require('./lib/timeHandler').getCurrentHour;
 
 const userName = process.argv[2] || process.env.USER || '';
 
@@ -14,15 +15,15 @@ const rl = readline.createInterface({
 });
 
 const init = () => {
-	process.stdout.write(greetUser(userName, getCurrentHour()) + '\n');
+	write(greetUser(userName, getCurrentHour()));
 	rl.on('line', input => {
 		if (input === 'Stop!') {
-			process.stdout.write(goodbyeUser(userName) + '\n');
+			write(goodbyeUser(userName));
 			process.exit(0);
 		}
 		const output = reverseInput(input);
-		process.stdout.write(output + '\n');
-		input === output && process.stdout.write(giveFeedback());
+		write(output);
+		write(palindromeChecker(input, output));
 	});
 };
 

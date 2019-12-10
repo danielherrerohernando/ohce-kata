@@ -1,4 +1,4 @@
-const { GOODMORNING, GOODAFTERNOON, GOODNIGHT, BYE, NICEWORD } = require('./constants');
+const { GOODMORNING, GOODAFTERNOON, GOODNIGHT, BYE } = require('./constants');
 
 const greetUser = (username, hour = 8) => {
 	if (hour >= 6 && hour < 12) return `¡${GOODMORNING} ${username}!`;
@@ -8,6 +8,4 @@ const greetUser = (username, hour = 8) => {
 
 const goodbyeUser = username => `${BYE} ${username}`;
 
-const giveFeedback = () => NICEWORD;
-
-module.exports = { greetUser, goodbyeUser, giveFeedback };
+module.exports = { greetUser, goodbyeUser };
