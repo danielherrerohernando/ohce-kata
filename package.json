@@ -4,7 +4,7 @@
 	"description": "A cli app for the ohce kata",
 	"main": "./src/index.js",
 	"scripts": {
-		"test": "mocha 'test/**/*.test.js'",
+		"test": "NODE_ENV=test  mocha 'test/**/*.test.js'",
 		"lint": "eslint .",
 		"precommit": "npm run lint",
 		"prepush": "npm run test"
@@ -29,6 +29,7 @@
 	},
 	"devDependencies": {
 		"chai": "^4.2.0",
+		"chai-string": "^1.5.0",
 		"concat-stream": "^2.0.0",
 		"eslint": "^6.7.2",
 		"husky": "^3.1.0",
