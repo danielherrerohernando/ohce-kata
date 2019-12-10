@@ -3,13 +3,15 @@ const concat = require('concat-stream');
 
 const execute = processPath => (userName, inputs = []) => {
 	const childProcess = spawn('node', [processPath, userName], { stdio: [null, null, null, 'ipc'] });
+
 	const inputFeeder = inputs => {
-		if (!inputs.length) childProcess.stdin.end();
-		setTimeout(() => {
+		if (!inputs.length) return childProcess.stdin.end();
+		currentInputTimeout = setTimeout(() => {
 			childProcess.stdin.write(inputs[0]);
-			loop(inputs.slice(1));
+			inputFeeder(inputs.slice(1));
 		}, 200);
 	};
+
 	const promise = new Promise((resolve, reject) => {
 		childProcess.stdin.setEncoding('utf-8');
 		childProcess.stdout.setEncoding('utf-8');
@@ -18,7 +20,9 @@ const execute = processPath => (userName, inputs = []) => {
 		inputFeeder(inputs);
 		childProcess.stdout.pipe(concat(result => resolve(result)));
 	});
+
 	promise.relatedProcess = childProcess;
+
 	return promise;
 };
 
