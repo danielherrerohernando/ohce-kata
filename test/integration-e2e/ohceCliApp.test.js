@@ -34,6 +34,16 @@ describe('Integration-E2E Tests', () => {
 			expect(output).to.startsWith('¡Buenas noches Daniel!');
 		});
 	});
+	describe('The ohce cli app knows when to stop and says goodbye', () => {
+		it('Should stop when receives Stop! input and prints goodbye msg', async () => {
+			const promiseFromChildProcess = basicProcess('Daniel', ['Stop!\n']);
+			const childProcess = promiseFromChildProcess.relatedProcess;
+			childProcess.send({ mockTime: mockTimeMorning });
+			childProcess.send({ start: 'start' });
+			const output = await promiseFromChildProcess;
+			expect(output).to.endsWith('Adios Daniel\n');
+		});
+	});
 	describe('The ohce cli app handles input', () => {
 		it('Should greet user on startup - Morning & Reverse some input & Handle stop', async () => {
 			const promiseFromChildProcess = basicProcess('Daniel', ['lightning\n', 'Stop!\n']);
