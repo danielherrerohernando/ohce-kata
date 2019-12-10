@@ -53,5 +53,13 @@ describe('Integration-E2E Tests', () => {
 			const output = await promiseFromChildProcess;
 			expect(output).to.equal('¡Buenos días Daniel!\ngninthgil\nAdios Daniel\n');
 		});
+		it('Gets happy and prints a nice msg when detects a palindrome', async () => {
+			const promiseFromChildProcess = basicProcess('Daniel', ['otto\n', 'Stop!\n']);
+			const childProcess = promiseFromChildProcess.relatedProcess;
+			childProcess.send({ mockTime: mockTimeMorning });
+			childProcess.send({ start: 'start' });
+			const output = await promiseFromChildProcess;
+			expect(output).to.contain('¡Bonita palabra!');
+		});
 	});
 });
