@@ -36,7 +36,7 @@ describe('Integration-E2E Tests', () => {
 	});
 	describe('The ohce cli app handles input', () => {
 		it('Should greet user on startup - Morning & Reverse some input & Handle stop', async () => {
-			const promiseFromChildProcess = basicProcess('Daniel', ['lightning', 'stop']);
+			const promiseFromChildProcess = basicProcess('Daniel', ['lightning\n', 'stop\n']);
 			const childProcess = promiseFromChildProcess.relatedProcess;
 			childProcess.send({ mockTime: mockTimeMorning });
 			childProcess.send({ start: 'start' });
