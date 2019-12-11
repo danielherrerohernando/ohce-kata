@@ -4,7 +4,7 @@ const readline = require('readline');
 const { write } = require('./lib/stdoutWriter');
 const { greetUser, goodbyeUser } = require('./lib/greetings');
 const { reverseInput, palindromeChecker } = require('./lib/inputHandler');
-const { STOP } = require('./constants');
+const { STOP } = require('./lib/constants');
 
 global.getCurrentHour = require('./lib/timeHandler').getCurrentHour;
 
