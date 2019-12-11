@@ -1,3 +1,3 @@
-const write = data => data && process.stdout.write(data + '\n');
+const write = data => data && console.log(data);
 
 module.exports = { write };

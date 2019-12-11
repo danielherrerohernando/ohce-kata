@@ -4,6 +4,7 @@ const readline = require('readline');
 const { write } = require('./lib/stdoutWriter');
 const { greetUser, goodbyeUser } = require('./lib/greetings');
 const { reverseInput, palindromeChecker } = require('./lib/inputHandler');
+const { STOP } = require('./constants');
 
 global.getCurrentHour = require('./lib/timeHandler').getCurrentHour;
 
@@ -17,7 +18,7 @@ const rl = readline.createInterface({
 const init = () => {
 	write(greetUser(userName, getCurrentHour()));
 	rl.on('line', input => {
-		if (input === 'Stop!') {
+		if (input === STOP) {
 			write(goodbyeUser(userName));
 			process.exit(0);
 		}
