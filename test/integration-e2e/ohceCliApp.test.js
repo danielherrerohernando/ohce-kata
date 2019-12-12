@@ -44,7 +44,7 @@ describe('Integration-E2E Tests', () => {
 			childProcess.send({ mockTime: mockTimeMorning });
 			childProcess.send({ start: 'start' });
 			const output = await promiseFromChildProcess;
-			expect(output).to.endsWith('Adios Daniel\n');
+			expect(output).to.endsWith('Adiós Daniel\n');
 		});
 	});
 	describe('The ohce cli app handles input', () => {
@@ -54,7 +54,7 @@ describe('Integration-E2E Tests', () => {
 			childProcess.send({ mockTime: mockTimeMorning });
 			childProcess.send({ start: 'start' });
 			const output = await promiseFromChildProcess;
-			expect(output).to.equal('¡Buenos días Daniel!\ngninthgil\nAdios Daniel\n');
+			expect(output).to.equal('¡Buenos días Daniel!\ngninthgil\nAdiós Daniel\n');
 		});
 		it('Gets happy and prints a nice msg when detects a palindrome', async () => {
 			const promiseFromChildProcess = basicProcess('Daniel', ['otto\n', 'Stop!\n']);
@@ -72,12 +72,12 @@ describe('Integration-E2E Tests', () => {
 			childProcess.send({ mockTime: mockTimeAfternoon });
 			childProcess.send({ start: 'start' });
 			const output = await promiseFromChildProcess;
-			expect(output).to.equal('¡Buenas tardes Rudolf!\namanaP .lanac a ,nalp a ,nam A\n¡Bonita frase!\nAdios Rudolf\n');
+			expect(output).to.equal('¡Buenas tardes Rudolf!\namanaP .lanac a ,nalp a ,nam A\n¡Bonita frase!\nAdiós Rudolf\n');
 		});
 	});
 	describe('The ohce cli app is multilingual', () => {
 		it('Should greet user in English - afternoon if the option language is set to "en"', async () => {
-			const promiseFromChildProcess = basicProcess('Mattias --language=en', ['Stop!\n']);
+			const promiseFromChildProcess = basicProcess(['Mattias', '--language=en'], ['Stop!\n']);
 			const childProcess = promiseFromChildProcess.relatedProcess;
 			childProcess.send({ mockTime: mockTimeAfternoon });
 			childProcess.send({ start: 'start' });
@@ -85,15 +85,15 @@ describe('Integration-E2E Tests', () => {
 			expect(output).to.equal('¡Good afternoon Mattias!\nBye Mattias\n');
 		});
 		it('Should greet user in Hungarian - night if the option language is set to "hu"', async () => {
-			const promiseFromChildProcess = basicProcess('Mattias --language=hu', ['Stop!\n']);
+			const promiseFromChildProcess = basicProcess(['Mattias', '--language=hu'], ['Stop!\n']);
 			const childProcess = promiseFromChildProcess.relatedProcess;
 			childProcess.send({ mockTime: mockTimeNight });
 			childProcess.send({ start: 'start' });
 			const output = await promiseFromChildProcess;
-			expect(output).to.equal('¡jó napot Mattias!\nViszlát Mattias\n');
+			expect(output).to.equal('¡Jó estét Mattias!\nViszlát Mattias\n');
 		});
 		it('Should greet user in Spanish - morning if the option language is set to a non-available language', async () => {
-			const promiseFromChildProcess = basicProcess('Mattias --language=sk', ['Stop!\n']);
+			const promiseFromChildProcess = basicProcess(['Mattias', '--language=sk'], ['Stop!\n']);
 			const childProcess = promiseFromChildProcess.relatedProcess;
 			childProcess.send({ mockTime: mockTimeMorning });
 			childProcess.send({ start: 'start' });
