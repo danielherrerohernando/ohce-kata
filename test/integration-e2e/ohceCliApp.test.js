@@ -65,4 +65,14 @@ describe('Integration-E2E Tests', () => {
 			expect(output).to.contain('¡Bonita palabra!');
 		});
 	});
+	describe('The ohce cli app handles complex input', () => {
+		it('Should greet user on startup - Afternoon & Reverse a palindrome sentence with commas and uppercase letters & Handle stop', async () => {
+			const promiseFromChildProcess = basicProcess('Rudolf', ['A man, a plan, a canal. Panama\n', 'Stop!\n']);
+			const childProcess = promiseFromChildProcess.relatedProcess;
+			childProcess.send({ mockTime: mockTimeAfternoon });
+			childProcess.send({ start: 'start' });
+			const output = await promiseFromChildProcess;
+			expect(output).to.equal('¡Buenas tardes Rudolf!\namanaP .lanac a ,nalp a ,nam A\n¡Bonita frase!\nAdios Rudolf\n');
+		});
+	});
 });
