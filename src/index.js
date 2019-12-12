@@ -9,6 +9,7 @@ const { STOP } = require('./lib/constants');
 global.getCurrentHour = require('./lib/timeHandler').getCurrentHour;
 
 const userName = process.argv[2] || process.env.USER || '';
+const greetUsername = greetUser(userName);
 
 const rl = readline.createInterface({
 	input: process.stdin,
@@ -16,7 +17,7 @@ const rl = readline.createInterface({
 });
 
 const init = () => {
-	write(greetUser(userName, getCurrentHour()));
+	write(greetUsername(getCurrentHour()));
 	rl.on('line', input => {
 		if (input === STOP) {
 			write(goodbyeUser(userName));
