@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { greetUser, goodbyeUser } = require('../../src/greetings');
+const { greetUser, goodbyeUser } = require('../../src/lib/greetings');
 
 describe('Unit test - Greetings Handler', () => {
 	const greetDaniel = greetUser('Daniel');

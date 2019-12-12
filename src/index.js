@@ -1,21 +1,32 @@
 #!/usr/bin/env node
 
-const { greetUser } = require('./greetings');
-let { getCurrentHour } = require('./timeHandler');
+const readline = require('readline');
+const { write } = require('./lib/stdoutWriter');
+const { greetUser, goodbyeUser } = require('./lib/greetings');
+const { reverseInput, palindromeChecker } = require('./lib/inputHandler');
+const { STOP } = require('./lib/constants');
+
+global.getCurrentHour = require('./lib/timeHandler').getCurrentHour;
 
 const userName = process.argv[2] || process.env.USER || '';
 const greetUsername = greetUser(userName);
 
-const init = () => {
-	process.stdout.write(greetUsername(getCurrentHour()) + '\n');
-};
-
-process.on('message', mock => {
-	if (mock.mockTime) getCurrentHour = () => mock.mockTime;
-	if (mock.start) {
-		init();
-		process.disconnect();
-	}
+const rl = readline.createInterface({
+	input: process.stdin,
+	output: null
 });
 
-process.env.NODE_ENV !== 'test' && init();
+const init = () => {
+	write(greetUsername(getCurrentHour()));
+	rl.on('line', input => {
+		if (input === STOP) {
+			write(goodbyeUser(userName));
+			process.exit(0);
+		}
+		const output = reverseInput(input);
+		write(output);
+		write(palindromeChecker(input, output));
+	});
+};
+
+process.env.NODE_ENV !== 'test' ? init() : require('../test/testHelper/mocks')(init);

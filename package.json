@@ -5,6 +5,8 @@
 	"main": "./src/index.js",
 	"scripts": {
 		"test": "NODE_ENV=test  mocha 'test/**/*.test.js'",
+		"test:unit": "NODE_ENV=test mocha 'test/unit/*.test.js'",
+		"test:integration": "NODE_ENV=test mocha 'test/integration-e2e/*.test.js'",
 		"lint": "eslint .",
 		"precommit": "npm run lint",
 		"prepush": "npm run test"
