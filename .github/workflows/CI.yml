@@ -1,12 +1,12 @@
 name: Node CI - Unit and Integration Tests
 
 on:
-	push:
-		branches:
-		- master
-	pull-request:
-		branches:
-		- master
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
