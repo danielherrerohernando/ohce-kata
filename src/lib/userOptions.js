@@ -10,7 +10,8 @@ const { argv } = require('yargs')
 	.describe('l', 'Choose a language')
 	.help('h')
 	.alias('h', 'help')
-	.epilog('copyright 2019');
+	.alias('v', 'version')
+	.epilog('Lots of love from Betisman & Daniel Herrero, Madrid 2019');
 
 const languages = {
 	es: {
