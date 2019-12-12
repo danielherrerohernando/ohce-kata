@@ -1,8 +1,9 @@
 const { spawn } = require('child_process');
 const concat = require('concat-stream');
 
-const execute = processPath => (userName, inputs = []) => {
-	const childProcess = spawn('node', [processPath, userName], { stdio: [null, null, null, 'ipc'] });
+const execute = processPath => (options, inputs = []) => {
+	const commandInput = Array.isArray(options) ? options : [options];
+	const childProcess = spawn('node', [processPath, ...commandInput], { stdio: [null, null, null, 'ipc'] });
 
 	const inputFeeder = inputs => {
 		if (!inputs.length) return childProcess.stdin.end();

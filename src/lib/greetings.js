@@ -1,4 +1,4 @@
-const { GOODMORNING, GOODAFTERNOON, GOODNIGHT, BYE } = require('./constants');
+const { GOODMORNING, GOODAFTERNOON, GOODNIGHT, BYE } = require('./userOptions');
 
 const isMorning = hour => hour >= 6 && hour < 12;
 const isAfternoon = hour => hour >= 12 && hour < 20;

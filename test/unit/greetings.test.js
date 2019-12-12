@@ -26,6 +26,6 @@ describe('Unit test - Greetings Handler', () => {
 
 	it('Should say goodbye to the user including the username', () => {
 		const goodbye = goodbyeUser('Daniel');
-		expect(goodbye).to.equal('Adios Daniel');
+		expect(goodbye).to.equal('Adiós Daniel');
 	});
 });

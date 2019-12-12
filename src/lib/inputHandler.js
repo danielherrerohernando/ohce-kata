@@ -1,4 +1,4 @@
-const { NICEWORD, NICESENTENCE, STOP } = require('./constants');
+const { NICEWORD, NICESENTENCE, STOP } = require('./userOptions');
 const { write } = require('./stdoutWriter');
 const { goodbyeUser } = require('./greetings');
 
