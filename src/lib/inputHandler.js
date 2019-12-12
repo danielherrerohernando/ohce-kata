@@ -1,4 +1,4 @@
-const { NICEWORD, NICESENTENCE, STOP } = require('./userOptions');
+const { NICEWORD, NICESENTENCE, EXITHINT, STOP } = require('./userOptions');
 const { write } = require('./stdoutWriter');
 const { goodbyeUser } = require('./greetings');
 
@@ -22,11 +22,12 @@ const palindromeChecker = (input, output) => {
 const inputHandler = userName => input => {
 	if (input === STOP) {
 		writeGreet(goodbyeUser(userName));
-		process.exit(0);
+		return process.exit(0);
 	}
 	const output = reverseInput(input);
 	writeStd(output);
 	writeFeedback(palindromeChecker(input, output));
+	if (/stop/i.test(input)) writeFeedback(EXITHINT);
 };
 
 module.exports = { reverseInput, palindromeChecker, inputHandler };

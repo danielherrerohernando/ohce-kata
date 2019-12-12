@@ -20,7 +20,8 @@ const languages = {
 		GOODNIGHT: 'Buenas noches',
 		BYE: 'Adiós',
 		NICEWORD: '¡Bonita palabra!',
-		NICESENTENCE: '¡Bonita frase!'
+		NICESENTENCE: '¡Bonita frase!',
+		EXITHINT: '¿Querías decir "Stop!"?, si quieres salir de la app solo escribe "Stop!"'
 	},
 	en: {
 		GOODMORNING: 'Good morning',
@@ -28,7 +29,8 @@ const languages = {
 		GOODNIGHT: 'Good night',
 		BYE: 'Bye',
 		NICEWORD: '¡Nice word!',
-		NICESENTENCE: '¡Nice sentence!'
+		NICESENTENCE: '¡Nice sentence!',
+		EXITHINT: 'Did you mean "Stop!"?, if you want to exit the app just type "Stop!"'
 	},
 	hu: {
 		GOODMORNING: 'Jó reggelt',
@@ -36,7 +38,8 @@ const languages = {
 		GOODNIGHT: 'Jó estét',
 		BYE: 'Viszlát',
 		NICEWORD: '¡Szép szó!',
-		NICESENTENCE: '¡Szép mondat!'
+		NICESENTENCE: '¡Szép mondat!',
+		EXITHINT: 'A "Stop!" -Ra gondoltál, ha kilépni akarsz az alkalmazásból, írja be a "Stop!"'
 	}
 };
 

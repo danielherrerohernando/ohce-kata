@@ -109,7 +109,7 @@ describe('Integration-E2E Tests', () => {
 			childProcess.send({ start: 'start' });
 			const output = await promiseFromChildProcess;
 			expect(output).to.equal(
-				'¡Buenas tardes Lola!\npots\n¡¿Querías decir "Stop!"?, si quieres salir de la app solo escribe "Stop!"\nAdiós Lola\n'
+				'¡Buenas tardes Lola!\npots\n¿Querías decir "Stop!"?, si quieres salir de la app solo escribe "Stop!"\nAdiós Lola\n'
 			);
 		});
 	});
