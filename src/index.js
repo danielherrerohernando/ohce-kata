@@ -4,9 +4,10 @@ const { greetUser } = require('./greetings');
 let { getCurrentHour } = require('./timeHandler');
 
 const userName = process.argv[2] || process.env.USER || '';
+const greetUsername = greetUser(userName);
 
 const init = () => {
-	process.stdout.write(greetUser(userName, getCurrentHour()) + '\n');
+	process.stdout.write(greetUsername(getCurrentHour()) + '\n');
 };
 
 process.on('message', mock => {
