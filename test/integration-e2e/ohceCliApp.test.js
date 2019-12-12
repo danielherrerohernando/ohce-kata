@@ -101,4 +101,16 @@ describe('Integration-E2E Tests', () => {
 			expect(output).to.equal('¡Buenos días Mattias!\nAdiós Mattias\n');
 		});
 	});
+	describe('The ohce cli app shows suggestions for similar commands', () => {
+		it('Should show a suggestion when the user types sth similar to stop', async () => {
+			const promiseFromChildProcess = basicProcess('Lola', ['stop\n', 'Stop!\n']);
+			const childProcess = promiseFromChildProcess.relatedProcess;
+			childProcess.send({ mockTime: mockTimeAfternoon });
+			childProcess.send({ start: 'start' });
+			const output = await promiseFromChildProcess;
+			expect(output).to.equal(
+				'¡Buenas tardes Lola!\npots\n¡¿Querías decir "Stop!"?, si quieres salir de la app solo escribe "Stop!"\nAdiós Lola\n'
+			);
+		});
+	});
 });

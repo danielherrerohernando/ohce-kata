@@ -8,7 +8,11 @@ const writeFeedback = write('feedback');
 
 const purifyString = str => str.toLowerCase().replace(/[^A-Za-z]/g, '');
 
-const reverseInput = input => input.split('').reverse().join('');
+const reverseInput = input =>
+	input
+		.split('')
+		.reverse()
+		.join('');
 
 const palindromeChecker = (input, output) => {
 	if (purifyString(input) === purifyString(output)) return input.includes(' ') ? NICESENTENCE : NICEWORD;
