@@ -3,9 +3,13 @@ Our solution for GuideSmiths 2019 Christmas Challenge - **ohce-kata**.
 
 ### Usage
 Just install the app globally `npm i ohce-cli-app -g` in your machine and the `ohce` command will be available. (the app-package is available in NPM)
+
 Example:
+
 `ohce Felipe` will launch the app.
+
 `ohce Glenn --language=en` will launch the app in English.
+
 `ohce Peter -l hu` will launch the app in Hungarian.
 
 ### Solution criteria:
@@ -27,6 +31,13 @@ But we have gone further and implemented a few more features that make our ohce 
 - It shows documentation to let the user know the available commands and how to use them.
 
 We have set a **CI pipeline** to run our test suite with GitHub actions and a **CD pipeline** too for automating the app-package publishing to NPM (https://www.npmjs.com/package/ohce-cli-app) triggered by each new release.
+
+A Kanban board has been our tool to manage project issues, milestones and PRs. Each commit is related to at least one issue by its id#.
+
+We hope you like it,
+
+Lots of love ❤️,
+Carlos & Daniel
 
 ## kata-requirements
 **ohce** is a console application that echoes the reverse of what you input through the console.
