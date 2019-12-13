@@ -1,4 +1,4 @@
-name: Package Publishing to NPM & Github Package Registry
+name: Package Publishing to NPM
 
 on:
   release:
