@@ -1,13 +1,32 @@
-# ohce-kata
-GuideSmiths 2019 Christmas Challenge.
+# ohce-cli-app
+Our solution for GuideSmiths 2019 Christmas Challenge - **ohce-kata**.
 
-Solution criteria (to be scored from 1 to 10)
+### Usage
+Just install the app globally `npm i ohce-cli-app -g` in your machine and the `ohce` command will be available. (the app-package is available in NPM)
+Example:
+`ohce Felipe` will launch the app.
+`ohce Glenn --language=en` will launch the app in English.
+`ohce Peter -l hu` will launch the app in Hungarian.
 
-- commits quality
-- TDD driven
-- pairing
-- test design quality
-- software design quality
+### Solution criteria:
+
+- **commits quality**: We have followed our **GS commit template** (prefix: title | description | ticketNº), so it´s really easy to track changes in our repo, we´ve committed often (74 commits at the time this readme is written), one commit per each relevant change.
+- **TDD driven**: We have used a TDD approach from the very beginning. Reviewing commits history shows how we always wrote a test (specially e2e) to check every new feature. We check it failing and then we implement the necessary changes in our code until our cli app passes the tests.
+- **pairing**: Our collaboration can be reviewed through the different pull requests & issues discussions. Commits history is not the only way to check for "pairing".
+- **test design quality**: Our approach has been testing production code without non-sense mocks. This means that we have unit tests for our functions (single responsibility, input-output) and, for the highly valuable e2e tests, we use Mocha as the test runner. Mocha process spawns our cli-app as a child process so we can feed it with inputs and check for the right output. We use Node IPC (Inter Process Communication) to be able to simulate different hours by monkey-patching the getCurrentHour function in test env using a pub-sub pattern. Our test suite covers every feature/case due to the TDD approach.
+We have also added CI testing in our repo that is triggered for every PR.
+- **software design quality**: We have followed clean code best practices and tried to keep things as modular as possible. We have curryfied all the functions that were suitable for it because we do not want to repeat ourselves and Felipe loves curry.
+
+Besides that, our cli-app, obviously, meets all the requirements that were specified in the original kata-specs. 
+
+But we have gone further and implemented a few more features that make our ohce app cooler.
+- It handles palindromes even when they are a whole sentence with commas and other non-alphanumeric characters.
+- It chalks the output to put a little bit of color in your life.
+- It supports language options, default is Spanish but you can get ohce to answer you using English or Hungarian, yes, Hungarian!!
+- It shows suggestions when you type in something similar to a known command like "stop".
+- It shows documentation to let the user know the available commands and how to use them.
+
+We have set a **CI pipeline** to run our test suite with GitHub actions and a **CD pipeline** too for automating the app-package publishing to NPM (https://www.npmjs.com/package/ohce-cli-app) triggered by each new release.
 
 ## kata-requirements
 **ohce** is a console application that echoes the reverse of what you input through the console.
