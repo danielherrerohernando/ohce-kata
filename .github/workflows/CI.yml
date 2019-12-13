@@ -28,3 +28,7 @@ jobs:
           npm run test:CI
         env:
           CI: true
+			- uses: actions/upload-artifact@v1
+				with:
+          name: testresults
+          path: ./testresults

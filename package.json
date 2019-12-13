@@ -5,12 +5,13 @@
 	"main": "./src/index.js",
 	"scripts": {
 		"test": "NODE_ENV=test  mocha 'test/**/*.test.js'",
-		"test:CI": "NODE_ENV=test mocha --reporter mocha-junit-reporter 'test/**/*.test.js'",
+		"test:CI": "NODE_ENV=test MOCHA_FILE='./testresults/test-results.xml' mocha --reporter mocha-junit-reporter 'test/**/*.test.js'",
 		"test:unit": "NODE_ENV=test mocha 'test/unit/*.test.js'",
 		"test:integration": "NODE_ENV=test mocha 'test/integration-e2e/*.test.js'",
 		"lint": "eslint .",
 		"precommit": "npm run lint",
-		"prepush": "npm run test"
+		"prepush": "npm run test",
+		"genExecutables": "pkg . --out-path='./executables'"
 	},
 	"repository": {
 		"type": "git",
@@ -37,7 +38,8 @@
 		"eslint": "^6.7.2",
 		"husky": "^3.1.0",
 		"mocha": "^6.2.2",
-		"mocha-junit-reporter": "^1.23.1"
+		"mocha-junit-reporter": "^1.23.1",
+		"pkg": "^4.4.1"
 	},
 	"dependencies": {
 		"chalk": "^3.0.0",
