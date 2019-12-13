@@ -30,7 +30,7 @@ But we have gone further and implemented a few more features that make our ohce 
 - It shows suggestions when you type in something similar to a known command like "stop".
 - It shows documentation to let the user know the available commands and how to use them.
 
-We have set a **CI pipeline** to run our test suite with GitHub actions and a **CD pipeline** too for automating the app-package publishing to NPM (https://www.npmjs.com/package/ohce-cli-app) triggered by each new release.
+We have set a **CI pipeline** to run our test suite and publishing test results as an artifact with GitHub actions and a **CD pipeline** too for automating the app-package publishing to NPM (https://www.npmjs.com/package/ohce-cli-app) triggered by each new release. Furthermore, the CD pipeline generates the executable files for Linux, Mac and Windows and save them as artifacts attached to each release.
 
 A Kanban board has been our tool to manage project issues, milestones and PRs. Each commit is related to at least one issue by its id#.
 
