@@ -28,7 +28,10 @@ jobs:
           npm run test:CI
         env:
           CI: true
-			- uses: actions/upload-artifact@v1
-				with:
+      - name: publish test results
+        uses: actions/upload-artifact@v1
+        with:
           name: testresults
-          path: ./testresults
+          path: testresults/test-results.xml 
+          
+  
