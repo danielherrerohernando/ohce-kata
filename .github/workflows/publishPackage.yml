@@ -1,4 +1,4 @@
-name: Package Publishing to NPM
+name: Package Publishing to NPM and publishing executables (Linux, Mac, Windows)
 
 on:
   release:
@@ -28,3 +28,29 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+  generate-executables:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: generate executables
+        run: |
+          npm ci
+          npm run genExecutables
+        env:
+          CI: true
+      - name: publish Linux executable
+        uses: actions/upload-artifact@v1
+        with:
+          name: executables
+          path: executables/ohce-cli-app-linux
+      - name: publish Mac executable
+        uses: actions/upload-artifact@v1
+        with:
+          name: executables
+          path: executables/ohce-cli-app-macos
+      - name: publish Windows executable
+        uses: actions/upload-artifact@v1
+        with:
+          name: executables
+          path: executables/ohce-cli-app-win
